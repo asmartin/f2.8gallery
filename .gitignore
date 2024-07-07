@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+*.swp
+env/
+galleries/
+output/
+about.html
+contact.html

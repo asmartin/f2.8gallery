@@ -1,0 +1,66 @@
+body {
+    background-color: #0F1934;
+    color: #F8F7FD;
+}
+
+.middle {
+    vertical-align: middle;
+}
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+    background: #2d3e50a0;
+    text-align: left;
+}
+
+.home-menu {
+    z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+    color: white;
+    font-weight: 400;
+    font-size: clamp(8px, 3vw, 40px)
+}
+
+.pure-menu-list {
+    font-size: clamp(4px, 2vw, 20px)
+}
+
+.home-menu .pure-menu-selected a {
+    color: white;
+}
+
+.home-menu a {
+    color: #6FBEF3;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5;
+}
+
+.footer {
+    background: #2d3e50;
+    font-size: 87.5%;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.modal-body {
+    color: #393939;
+}
+
+h1 {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+.ngy2_container {
+    margin-left: 10px;
+    margin-right: 10px;
+}

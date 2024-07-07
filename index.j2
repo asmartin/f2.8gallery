@@ -1,0 +1,82 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery -->
+    <script type="text/javascript"  src="assets/js/jquery.min.js"></script>
+    <!-- nanogallery2 -->
+    <link href="assets/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="assets/js/jquery.nanogallery2.min.js"></script>
+    <!-- jQuery Modal -->
+    <script src="assets/js/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="assets/css/jquery.modal.min.css"/>
+    <!-- purecss -->
+    <link rel="stylesheet" href="assets/css/pure-min.css"/>
+    <link rel="stylesheet" href="assets/css/grids-responsive-min.css"/>
+    <!-- other -->
+    <link type="text/css" rel="stylesheet" href="assets/css/style.css" />
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#4f78d2">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#ffffff">
+    <title>{{ webpage_name }}</title>
+  </head>
+  <body>
+    <div class="header">
+        <div class="home-menu pure-menu pure-menu-horizontal">
+    	    <img class="middle" src="assets/img/logo.svg"/><a class="pure-menu-heading" href="">{{ webpage_name }}</a>
+    
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#about" rel="modal:open" class="pure-menu-link">About</a></li>
+                <li class="pure-menu-item"><a href="#contact" rel="modal:open" class="pure-menu-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="gallery">
+      {% for name, gallery in galleries.items() | sort(attribute='0')  %}
+        <h1>{{ name.replace("_", " ") | regex_replace("^[0-9]+", "") | title }}</h1>
+        <div id="nanogallery2{{ name }}" data-nanogallery2 = '{
+        "viewerToolbar":   {
+            "display":    false
+          },
+          "viewerTools":     {
+            "topLeft":    "pageCounter, playPauseButton, shareButton",
+            "topRight":   "zoomButton, fullscreenButton, closeButton"
+          },
+          "galleryTheme": "dark",
+          "viewerTheme":  "dark",
+	   "thumbnailWidth": "{{ thumbwidth }}",
+          "thumbnailHeight": "auto",
+          "thumbnailBaseGridHeight": 200,
+          "thumbnailHoverEffect2": "scale120|borderLighter",
+          "thumbnailDisplayTransition":          "scaleUp",
+          "thumbnailDisplayTransitionDuration":  500,  
+          "thumbnailDisplayInterval":            30
+        }'>
+          {% for file in gallery.files %}
+          <a href="galleries/{{ gallery.gallery_dir.replace(base, '') }}/{{ file }}" data-ngThumb="{{ gallery.thumbnail_dir.replace(output, '') | regex_replace('^/', '') }}/{{ file }}"></a>
+          {% endfor %}
+	</div><br/>
+        {% endfor %}
+    </div>
+    <div class="footer"><p>&copy; {{ author }} {{ now.strftime('%Y') }}</p></div>
+    <div id="about" class="modal">
+      <p class="modal-body">{% include 'about.html' %}</p>
+    </div>
+    <div id="contact" class="modal">
+      <p class="modal-body">{% include 'contact.html' %}</p>
+    </div>
+    <script type="text/javascript">
+     $("#fade").modal({
+      fadeDuration: 100
+    });
+    </script>
+  </body>
+</html>
