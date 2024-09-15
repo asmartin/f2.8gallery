@@ -7,11 +7,18 @@ import shutil
 import sys
 import urllib
 from jinja2 import Environment, FileSystemLoader
-from PIL import Image
 from pprint import pprint
 from jinja2 import Environment, PackageLoader
 from urllib.request import urlretrieve
 
+# PIL may be installed as "Pil" or similar on case-insensitive filesytems
+try:
+    from PIL import Image
+except ImportError:
+    try:
+        from Pil import Image
+    except ImportError:
+        from pil import Image
 
 def regex_replace(s, find, replace):
     """Implement a regex filter for jinja2"""
