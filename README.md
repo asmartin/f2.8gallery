@@ -16,12 +16,26 @@ An elegant and responsive static site generator for displaying your photography 
 
 ## Installation
 
+Make sure python3 is installed and then create a virtual environment for f2.8gallery:
+
+Linux or Mac OS:
+
 ```
 git clone https://github.com/asmartin/f2.8gallery.git
 cd f2.8gallery
-python3 -m venv env
+python -m venv env
 source env/bin/activate
-pip3 install -r requirements.txt
+pip install -r requirements.txt
+```
+
+Windows:
+
+```
+git clone https://github.com/asmartin/f2.8gallery.git
+cd f2.8gallery
+python -m venv env
+env/Scripts/activate
+pip install -r requirements.txt
 ```
 
 ## Building Your Site
@@ -46,17 +60,16 @@ Now, place your original, full-size JPGs in each of these directories. Then, cre
 Once you're ready, build your site:
 
 ```
-source env/bin/activate
-./f2.8gallery.py --title "John Smith Photos" --author "John Smith" /path/to/galleries /path/to/output
+python f2.8gallery.py --title "John Smith Photos" --author "John Smith" galleries output
 ```
 
 After your site is built, you can serve it locally to review before publishing online:
 
 ```
-python3 -m http.server --directory /path/to/output
+python -m http.server --directory output
 ```
 
-Now visit http://localhost:8000 to view your site. When you're ready to publish, simply sync `/path/to/output` to your hosting platform.
+Now visit http://localhost:8000 to view your site. When you're ready to publish, simply sync `output` to your hosting platform.
 
 ## Libraries
 
