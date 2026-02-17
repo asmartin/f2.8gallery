@@ -61,17 +61,17 @@
           "thumbnailDisplayInterval":            30
         }'>
           {% for file in gallery.files %}
-          <a href="galleries/{{ gallery.gallery_dir.replace(base, '') }}/{{ file }}" data-ngThumb="{{ gallery.thumbnail_dir.replace(output, '') | regex_replace('^/', '') }}/{{ file }}"></a>
+          <a href="{{ gallery.gallery_url }}/{{ file }}" data-ngThumb="{{ gallery.thumbnail_url }}/{{ file }}"></a>
           {% endfor %}
 	</div><br/>
         {% endfor %}
     </div>
     <div class="footer"><p>&copy; {{ author }} {{ now.strftime('%Y') }}</p></div>
     <div id="about" class="modal">
-      <p class="modal-body">{% include 'about.html' %}</p>
+      <div class="modal-body">{% include 'about.html' %}</div>
     </div>
     <div id="contact" class="modal">
-      <p class="modal-body">{% include 'contact.html' %}</p>
+      <div class="modal-body">{% include 'contact.html' %}</div>
     </div>
     <script type="text/javascript">
      $("#fade").modal({
