@@ -126,6 +126,8 @@ def main():
             galleries[gallery_name] = {}
             galleries[gallery_name]["gallery_dir"] = path
             galleries[gallery_name]["thumbnail_dir"] = thumbnail_dir
+            galleries[gallery_name]["gallery_url"] = f"galleries/{gallery_name}"
+            galleries[gallery_name]["thumbnail_url"] = f"thumbnails/{gallery_name}"
             galleries[gallery_name]["files"] = []
             create_if_not_exists(thumbnail_dir)
             for file in os.listdir(path):
