@@ -11,12 +11,12 @@ from urllib.request import urlretrieve
 
 # PIL may be installed as "Pil" or similar on case-insensitive filesytems
 try:
-    from PIL import Image
+    from PIL import Image, ImageOps
 except ImportError:
     try:
-        from Pil import Image
+        from Pil import Image, ImageOps
     except ImportError:
-        from pil import Image
+        from pil import Image, ImageOps
 
 
 def regex_replace(s, find, replace):
@@ -138,6 +138,7 @@ def main():
                     if args.debug:
                         print(f"Creating thumbnail for {file} as {thumbnail}")
                     image = Image.open(f"{path}{os.path.sep}{file}")
+                    image = ImageOps.exif_transpose(image)
                     image.thumbnail(thumbnail_wh)
                     image.save(thumbnail)
 
